@@ -1,0 +1,26 @@
+<h1>Projects pages</h1>
+
+<p><%= notice %></p>
+
+<h1>Listing projects Here</h1>
+<%= link_to 'New project', new_project_path%>
+<table>
+	<thead>
+		<tr>
+			<th>Name</th>
+			<th>Description</th>
+			<th colspan="3">Action</th>
+	  </tr>
+	</thead>
+	<tbody>
+		<% @projects.each do |project| %>
+			<tr>
+				<td><%= project.name%></td>
+				<td><%= project.description%></td>
+				<td><%= link_to 'View' , project %></td>
+				<td><%= link_to 'Edit' , edit_project_path(project) %></td>
+				<td><%= link_to 'Delete' , project_path(project), data:{ turbo_method: :delete, turbo_confirm: 'Are you sure?'} %></td>
+			</tr>
+		<% end %>
+	</tbody>
+</table>

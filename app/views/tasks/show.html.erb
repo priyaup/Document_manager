@@ -1,0 +1,5 @@
+<h1>Task's documents Details Page</h1>
+<p><strong>Title: </strong><%= @task.title %></p>
+<p><strong>Employee: </strong><%= @task.employee.full_name %></p>
+
+<%= link_to 'Back', tasks_path%> | <%= link_to 'Edit', edit_task_path(@task)%>

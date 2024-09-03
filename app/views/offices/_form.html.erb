@@ -1,0 +1,30 @@
+<%= form_with model: @office, data: {turbo: false} do |form|%>
+	<div>
+		<%= form.label :office_name %><br>
+		<%= form.text_field :office_name%>
+		<% @office.errors.full_messages_for(:office_name).each do |message| %>
+      <div><%= message %></div>
+    <% end %>
+	</div>
+
+	<div>
+		<%= form.label :number_of_employees %><br>
+		<%= form.text_field :number_of_employees%>
+		<% @office.errors.full_messages_for(:number_of_employees).each do |message| %>
+      <div><%= message %></div>
+    <% end %>
+	</div>
+
+	<div>
+		<%= form.label :branch %><br>
+		<%= form.text_field :branch%>
+		<% @office.errors.full_messages_for(:branch).each do |message| %>
+      <div><%= message %></div>
+    <% end %>
+	</div><br>
+
+	<div>
+		<%= form.submit %> | <%= link_to 'Back', offices_path%> 
+	</div>
+	
+<%end%>

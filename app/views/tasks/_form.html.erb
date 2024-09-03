@@ -1,0 +1,22 @@
+<%= form_with model: @task, data: {turbo: false} do |form|%>
+	<div>
+		<%= form.label :title %><br>
+		<%= form.text_field :title%>
+		<% @task.errors.full_messages_for(:title).each do |message| %>
+      <div><%= message %></div>
+    <% end %>
+	</div>
+
+	<div>
+		<%= form.label :employee_id %><br>
+		<%= form.select :employee_id, options_for_select(Employee.all.map{|employee|[employee.name_with_email, employee.id]}, selected: task.employee_id),{prompt: 'Select Employee'}%>
+		<% @task.errors.full_messages_for(:employee_id).each do |message| %>
+    <div><%= message %></div>
+    <% end %>
+	</div>
+
+	<div>
+		<%= form.submit %> |  | <%= link_to 'Back', tasks_path %>
+	</div>
+<%end%>
+

@@ -1,0 +1,25 @@
+<%=notice%>
+
+<h1>About office</h1>
+<%= link_to 'New office', new_office_path%>
+<table>
+	<thead>
+		<tr>
+			<th>Office Name</th>
+			<th>Number of offices</th>
+			<th>Branch</th>
+		</tr>
+	</thead>
+	<tbody>
+		<% @offices.each do |office| %>
+			<tr>
+				<td><%= office.office_name%></td>
+				<td><%= office.number_of_employees%></td>
+				<td><%= office.branch%></td>
+				<td><%= link_to 'View' , office %></td>
+				<td><%= link_to 'Edit' , edit_office_path(office) %></td>
+				<td><%= link_to 'Delete' , office_path(office), data:{ turbo_method: :delete, turbo_confirm: 'Are you sure?'} %></td>
+			</tr>
+		<% end %>
+	</tbody>
+</table>

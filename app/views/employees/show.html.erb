@@ -1,0 +1,34 @@
+<div class="container mt-5">
+        <div class="card shadow">
+            <div class="card-header">
+                Employee Details
+            </div>
+            <div class="card-body">
+                <p><strong>Full Name:</strong> <%= @employee.full_name %></p>
+                <p><strong>Email:</strong> <%= @employee.email %></p>
+
+                <% if @employee.documents.present? %>
+                    <h4 class="mt-4">Employee Documents</h4>
+                    <div class="document">
+                        <% @employee.documents.each do |document| %>
+                            <p><strong>Document Name:</strong> <%= document.name %></p>
+                            <p><strong>Document Type:</strong> <%= document.doc_type %></p>
+                            <hr>
+                        <% end %>
+                    </div>
+                <% end %>
+
+                <% if @employee.task.present? %>
+                    <h4 class="mt-4">Employee Tasks</h4>
+                    <div class="task">
+                        <p><strong>Task Title:</strong> <%= @employee.task.title %></p>
+                    </div>
+                <% end %>
+
+                <div class="mt-4">
+                    <%= link_to 'Back', employees_path, class: 'btn btn-secondary' %>
+                    <%= link_to 'Edit', edit_employee_path(@employee), class: 'btn btn-primary' %>
+                </div>
+            </div>
+        </div>
+    </div>

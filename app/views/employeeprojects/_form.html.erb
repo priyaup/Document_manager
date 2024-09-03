@@ -1,0 +1,30 @@
+<%= form_with model: @employee_project, data: {turbo: false} do |form|%>
+	<div>
+		<%= form.label :submission_date %><br>
+		<%= form.date_field :submission_date%>
+		<% @employeeproject.errors.full_messages_for(:submission_date).each do |message| %>
+      <div><%= message %></div>
+    <% end %>
+	</div>
+
+	<div>
+		<%= form.label :employee_id %><br>
+		<%= form.number_field :employee_id%>
+		<% @employeeproject.errors.full_messages_for(:employee_id).each do |message| %>
+      <div><%= message %></div>
+    <% end %>
+	</div>
+
+	<div>
+		<%= form.label :project_id %><br>
+		<%= form.number_field :project_id%>
+		<% @employeeproject.errors.full_messages_for(:project_id).each do |message| %>
+      <div><%= message %></div>
+    <% end %>
+	</div><br>
+
+	<div>
+		<%= form.submit %> |  | <%= link_to 'Back', employee_projects_path %>
+	</div>
+<%end%>
+

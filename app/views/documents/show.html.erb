@@ -1,0 +1,6 @@
+<h1>Employee's documents Details Page</h1>
+<p><strong>Name: </strong><%= @document.name %></p>
+<p><strong>Doc Type: </strong><%= @document.doc_type %></p>
+<p><strong>Employee: </strong><%= @document.employee.full_name %></p>
+
+<%= link_to 'Back', documents_path%> | <%= link_to 'Edit', edit_document_path(@document)%>

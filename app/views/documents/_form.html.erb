@@ -1,0 +1,29 @@
+<%= form_with model: @document, data: {turbo: false} do |form|%>
+	<div>
+		<%= form.label :name %><br>
+		<%= form.text_field :name%>
+		<% @document.errors.full_messages_for(:name).each do |message| %>
+      <div><%= message %></div>
+    <% end %>
+	</div>
+
+	<div>
+		<%= form.label :doc_type %><br>
+		<%= form.select :doc_type, options_for_select(Document::DOC_TYPES, selected: document.doc_type),{prompt: 'Select document type'}%>
+		<% @document.errors.full_messages_for(:doc_type).each do |message| %>
+      <div><%= message %></div>
+    <% end %>
+	</div>
+
+	<div>
+		<%= form.label :employee_id %><br>
+		<%= form.select :employee_id, options_for_select(Employee.all.map{|employee|[employee.name_with_email, employee.id]}, selected: document.employee_id),{prompt: 'Select Employee'}%>
+		<% @document.errors.full_messages_for(:employee_id).each do |message| %>
+    <div><%= message %></div>
+    <% end %>
+	</div><br>
+
+	<div>
+		<%= form.submit %>
+	</div>
+<%end%>
